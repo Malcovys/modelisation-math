@@ -19,7 +19,10 @@ def solve_linear_system(
         return None
     
     # Solve the linear system and return results as python list
-    return np.linalg.solve(np_coefficient_matrix, np_ordinate_matrix).tolist()
+    solution = np.linalg.solve(np_coefficient_matrix, np_ordinate_matrix).tolist()
+
+    # Round each value to 3 decimal places and convert numpy types to native floats
+    return [float(round(x, 3)) for x in solution]
     
     
 

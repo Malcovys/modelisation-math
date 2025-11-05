@@ -1,7 +1,13 @@
 from core.linear_system import solve_linear_system
+from typing import List
 
-a = [[2, 1, -4], [3, 3, -5], [4, 5, -2]]
-b = [8, 14, 16]
+a: List[List[float]] = [
+    [2,   25,  5],
+    [10,   0, 30],
+    [0.5, 10,  1]
+]
+
+b = [50, 100, 20]
 
 solutions = solve_linear_system(a, b)
 
