@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def show():
-    """Page pour la régression linéaire"""
     st.header("📈 Régression Linéaire")
     st.markdown("Analyse de régression et prédiction")
     

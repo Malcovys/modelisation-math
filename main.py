@@ -1,6 +1,6 @@
 import streamlit as st
 
-from ui import linear_system_page, linear_programming_page, regression_page, stochastic_page
+from ui import linear_regression_page, linear_system_page, linear_programming_page, stochastic_page
 
 # Page Configuration
 st.set_page_config(
@@ -30,7 +30,7 @@ elif module == "📊 Programmation Linéaire":
     linear_programming_page.show()
 
 elif module == "📈 Régression Linéaire":
-    regression_page.show()
+    linear_regression_page.show()
 
 elif module == "🎲 Processus Stochastique":
     stochastic_page.show()
