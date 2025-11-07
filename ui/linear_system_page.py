@@ -2,8 +2,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+from core.linear_system import solve_linear_system
+
 def show():
-    """Page pour la résolution de systèmes linéaires"""
     st.header("📐 Résolution de Systèmes Linéaires")
     st.markdown("Résolution de systèmes d'équations linéaires de la forme **Ax = b**")
     
@@ -12,7 +13,7 @@ def show():
     with col1:
         st.subheader("📥 Saisie des données")
         
-        # Saisie de la matrice A
+        # Set A matrix
         st.markdown("**Matrice A (coefficients)**")
         st.caption("Entrez chaque ligne sur une nouvelle ligne, coefficients séparés par des espaces")
         matrix_a_text = st.text_area(
@@ -23,7 +24,7 @@ def show():
             key="matrix_a"
         )
         
-        # Saisie du vecteur b
+        # Set vector b
         st.markdown("**Vecteur b (résultats)**")
         st.caption("Valeurs séparées par des virgules")
         vector_b_text = st.text_input(
@@ -48,40 +49,33 @@ def show():
         
         elif solve_btn:
             try:
-                # Parser la matrice A
+                # Format A matrix
                 lines = matrix_a_text.strip().split('\n')
                 a = [[float(x) for x in line.split()] for line in lines if line.strip()]
                 
-                # Parser le vecteur b
+                # Format vertor b
                 b = [float(x.strip()) for x in vector_b_text.split(',')]
                 
-                # Vérifier les dimensions
+                # Check dimentions
                 if len(a) != len(b):
                     st.error(f"❌ Erreur : La matrice A a {len(a)} lignes mais le vecteur b a {len(b)} éléments.")
                 else:
-                    # Résoudre le système
-                    from core.linear_system import solve_linear_system
+                    # Resolve
                     solution = solve_linear_system(a, b)
                     
-                    # Afficher les résultats
-                    st.success("✅ Système résolu avec succès !")
-                    
-                    st.markdown("**Solution :**")
-                    for i, val in enumerate(solution):
-                        st.metric(label=f"x{i+1}", value=f"{val:.6f}")
-                    
-                    # Vérification (optionnel)
-                    st.markdown("**Vérification : Ax**")
-                    a_array = np.array(a)
-                    x_array = np.array(solution)
-                    b_calculated = a_array @ x_array
-                    
-                    verification_df = pd.DataFrame({
-                        'b (donné)': b,
-                        'Ax (calculé)': b_calculated,
-                        'Différence': [abs(b[i] - b_calculated[i]) for i in range(len(b))]
-                    })
-                    st.dataframe(verification_df, use_container_width=True)
+                    # Vérifier la solution retournée
+                    if solution is None:
+                        st.error("❌ Erreur : la fonction de résolution n'a pas renvoyé de solution.")
+                    else:
+                        # Normaliser la solution en liste pour l'itération
+                        solution_list = solution.tolist() if isinstance(solution, np.ndarray) else list(solution)
+                        
+                        # Afficher les résultats
+                        st.success("✅ Système résolu avec succès !")
+                        
+                        st.markdown("**Solution :**")
+                        for i, val in enumerate(solution_list):
+                            st.metric(label=f"x{i+1}", value=f"{val}")
                     
             except Exception as e:
                 st.error(f"❌ Erreur lors de la résolution : {str(e)}")

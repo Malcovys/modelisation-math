@@ -1,10 +1,9 @@
 from numpy import array, isclose, linalg
-from typing import Sequence, Optional
 
 def solve_linear_system(
-    coefficient_matrix: Sequence[Sequence[float]], 
-    ordinate_matrix: Sequence[float]
-) -> Optional[Sequence[float]]:
+    coefficient_matrix: list[list[float]], 
+    ordinate_matrix: list[float]
+) -> list[float] | None:
     
     # Converte given arrays to a numpy arrays
     np_coefficient_matrix = array(coefficient_matrix, dtype=float)
