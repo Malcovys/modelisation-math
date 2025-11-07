@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import pandas as pd
 
 from core.linear_system import solve_linear_system
 
@@ -65,7 +64,7 @@ def show():
                     
                     # Vérifier la solution retournée
                     if solution is None:
-                        st.error("❌ Erreur : la fonction de résolution n'a pas renvoyé de solution.")
+                        st.error("⚠️ La solution est indéterminée.")
                     else:
                         # Normaliser la solution en liste pour l'itération
                         solution_list = solution.tolist() if isinstance(solution, np.ndarray) else list(solution)
