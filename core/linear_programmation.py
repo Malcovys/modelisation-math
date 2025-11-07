@@ -40,20 +40,14 @@ def lp_data_from_csv(
 
 
 def lp_solve(
-    problem_name: str | None,
     decision_vars: list[str], 
     decision_vars_coef: list[float],
     constraintes_coef: list[list[float]],
     constraintes_inequality: list[float],
     maximize: bool,
 ) -> dict[str, float]:
-    # Define problem name
-    name = problem_name 
-    if name is None:
-        name =  "lp_problem"
-
     # Instancie the LpProblem model
-    lp_prob = LpProblem(name, LpMaximize if maximize else LpMinimize)
+    lp_prob = LpProblem("lp_problem", LpMaximize if maximize else LpMinimize)
 
     # Define decision variables
     decision_variables: dict[str, LpVariable] = dict()
@@ -97,14 +91,12 @@ def lp_solve(
 
 def lp_maximize_from_csv(
     path: str,
-    problem_name: str | None,
     to_maximize: str,
     decision_var_col: str
 ) -> dict[str, float]:
     data = lp_data_from_csv(path, to_maximize, decision_var_col)
 
     return lp_solve(
-        problem_name=problem_name,
         decision_vars=data["decision_vars"],
         decision_vars_coef=data["decision_vars_coef"],
         constraintes_coef=data["constraintes_coef"],
@@ -114,14 +106,12 @@ def lp_maximize_from_csv(
 
 def lp_minimize_from_csv(
     path: str,
-    problem_name: str | None,
     to_minimize: str,
     decision_var_col: str
 ) -> dict[str, float]:
     data = lp_data_from_csv(path, to_minimize, decision_var_col)
 
     return lp_solve(
-        problem_name=problem_name,
         decision_vars=data["decision_vars"],
         decision_vars_coef=data["decision_vars_coef"],
         constraintes_coef=data["constraintes_coef"],
