@@ -21,9 +21,8 @@ import os
 #     print(solutions)
 
 currend_directory = os.path.dirname(os.path.abspath(__file__))
-pastry_data__path = os.path.join(currend_directory, "./data/csv/pastry.csv")
-piece_data__path = os.path.join(currend_directory, "./data/csv/piece.csv")
 
+# pastry_data__path = os.path.join(currend_directory, "./data/csv/pastry.csv")
 # max_result = lp_maximize_from_csv(
 #     path=data_path, 
 #     problem_name="Pastry",
@@ -33,11 +32,12 @@ piece_data__path = os.path.join(currend_directory, "./data/csv/piece.csv")
 
 # print(f"max solution: {max_result}")
 
+transport_data__path = os.path.join(currend_directory, "./data/csv/transport.csv")
 min_result = lp_minimize_from_csv(
-    path=piece_data__path, 
-    problem_name="Pieces production",
+    path=transport_data__path, 
+    problem_name=None,
     to_minimize="Cost",
-    decision_var_col="Products"
+    decision_var_col="Ingrédient"
 )
 
 print(f"min solution: {min_result}")
