@@ -91,7 +91,7 @@ def show():
             key="reg_csv"
         )
 
-        compute_btn = st.button("📊 Calculer", type="primary", use_container_width=True)
+        compute_btn = st.button("📊 Calculer", type="primary", width="stretch")
         
         if uploaded_file is not None:
             # Load csv data
@@ -126,7 +126,7 @@ def show():
             )
             
             # Table
-            st.dataframe(data_frame, use_container_width=True)
+            st.dataframe(data_frame, width="stretch")
     
     with col2:
         st.subheader("📊 Résultats")

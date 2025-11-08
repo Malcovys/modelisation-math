@@ -35,7 +35,7 @@ def show():
             # Display uploaded data content
             data_frame = pd.read_csv(uploaded_file)
             st.markdown("**Aperçu des données :**")
-            st.dataframe(data_frame, use_container_width=True)
+            st.dataframe(data_frame, width="stretch")
             
             # Choose decision variables col selection
             col_decision = st.selectbox("Colonne des variables de décision", data_frame.columns, index=0)
@@ -80,7 +80,7 @@ def show():
     )
 
     # Resolve button
-    solve_btn = st.button("🔍 Résoudre", type="primary", use_container_width=True)
+    solve_btn = st.button("🔍 Résoudre", type="primary", width="stretch")
     
     # ==== Result section ====
     st.subheader("📊 Résultats")

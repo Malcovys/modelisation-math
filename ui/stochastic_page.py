@@ -48,9 +48,9 @@ def show():
         
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            simulate_btn = st.button("🎲 Simuler", type="primary", use_container_width=True)
+            simulate_btn = st.button("🎲 Simuler", type="primary", width="stretch")
         with col_btn2:
-            clear_btn = st.button("🗑️ Effacer", use_container_width=True)
+            clear_btn = st.button("🗑️ Effacer", width="stretch")
     
     with col2:
         st.subheader("📊 Résultats")

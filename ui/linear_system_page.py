@@ -36,9 +36,9 @@ def show():
         # Boutons
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            solve_btn = st.button("🔍 Résoudre", type="primary", use_container_width=True)
+            solve_btn = st.button("🔍 Résoudre", type="primary", width="stretch")
         with col_btn2:
-            clear_btn = st.button("🗑️ Effacer", use_container_width=True)
+            clear_btn = st.button("🗑️ Effacer", width="stretch")
     
     with col2:
         st.subheader("📊 Résultats")

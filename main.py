@@ -13,13 +13,14 @@ st.set_page_config(
 # Sidebar
 st.sidebar.title("Modules")
 module = st.sidebar.radio(
-    "",
+    "Choisissez un module",
     [
         "📐 Systèmes Linéaires",
         "📊 Programmation Linéaire",
         "📈 Régression Linéaire",
         "🎲 Processus Stochastique"
-    ]
+    ],
+    label_visibility="collapsed"
 )
 
 # Afficher la page sélectionnée
