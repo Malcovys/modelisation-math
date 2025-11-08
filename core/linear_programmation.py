@@ -1,9 +1,9 @@
 from pulp import LpProblem, LpMaximize, LpMinimize, LpVariable, LpStatus, value, LpAffineExpression
 import pandas as pd
 
-def lp_data_from_csv(
+def lp_extract_data_from_csv(
     path: str,
-    to_maximize: str,
+    objective_col: str,
     decision_var_col: str
 ) -> dict[str, list]:
     # Load csv data
@@ -14,10 +14,10 @@ def lp_data_from_csv(
     decision_vars: list[str] = data_frame_without_last_row[decision_var_col].tolist()
 
     # Get decision variables coefficients
-    decision_vars_coef: list[float] = data_frame_without_last_row[to_maximize].tolist()
+    decision_vars_coef: list[float] = data_frame_without_last_row[objective_col].tolist()
 
     # Get resource headers (exclude decision_var_col and to_maximize)
-    exclude_columns = {decision_var_col, to_maximize}
+    exclude_columns = {decision_var_col, objective_col}
     ressources_headers: list[str] = [col for col in data_frame.columns if col not in exclude_columns]
 
     # Get constraints coefficients (organized by resource, not by product)
@@ -91,10 +91,10 @@ def lp_solve(
 
 def lp_maximize_from_csv(
     path: str,
-    to_maximize: str,
+    objective_col: str,
     decision_var_col: str
 ) -> dict[str, float]:
-    data = lp_data_from_csv(path, to_maximize, decision_var_col)
+    data = lp_extract_data_from_csv(path, objective_col, decision_var_col)
 
     return lp_solve(
         decision_vars=data["decision_vars"],
@@ -106,10 +106,10 @@ def lp_maximize_from_csv(
 
 def lp_minimize_from_csv(
     path: str,
-    to_minimize: str,
+    objective_col: str,
     decision_var_col: str
 ) -> dict[str, float]:
-    data = lp_data_from_csv(path, to_minimize, decision_var_col)
+    data = lp_extract_data_from_csv(path, objective_col, decision_var_col)
 
     return lp_solve(
         decision_vars=data["decision_vars"],

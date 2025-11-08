@@ -31,16 +31,16 @@ def show():
             help="Format : Products, Resources..., Objective"
         )
 
-        # Choose decision variables col and objection col 
         if uploaded_file is not None:
+            # Display uploaded data content
             data_frame = pd.read_csv(uploaded_file)
             st.markdown("**Aperçu des données :**")
             st.dataframe(data_frame, use_container_width=True)
             
-            # Decision variables col selection
+            # Choose decision variables col selection
             col_decision = st.selectbox("Colonne des variables de décision", data_frame.columns, index=0)
             
-            # Objective col selection
+            # Choose objective col selection
             col_objective = st.selectbox("Colonne objectif", data_frame.columns, index=len(data_frame.columns)-1)
     
     else:  # Saisie manuelle
