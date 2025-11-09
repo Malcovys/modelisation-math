@@ -152,12 +152,12 @@ Simulate and analyze random processes.
 ## 📊 Data Formats
 
 ### Input Methods
-| Module | Manual | CSV | SVG |
-|--------|--------|-----|-----|
-| Linear Systems | ✅ | ❌ | ❌ |
-| Linear Programming | ✅ | ✅ | ❌ |
-| Linear Regression | ❌ | ✅ | ❌ |
-| Stochastic Processes | ✅ | ❌ | ❌ |
+| Module | Manual | CSV |
+|--------|--------|-----|
+| Linear Systems | ✅ | ❌ |
+| Linear Programming | ✅ | ✅ |
+| Linear Regression | ❌ | ✅ |
+| Stochastic Processes | ✅ | ❌ |
 
 ### CSV Examples
 
