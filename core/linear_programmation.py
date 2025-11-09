@@ -78,8 +78,8 @@ def lp_solve(
     # print(lp_prob)
 
     # Resolve
-    solve_status = lp_prob.solve()
-    print(LpStatus[solve_status])
+    lp_prob.solve()
+    # print(LpStatus[solve_status])
 
     # Set solutions
     solutions: dict[str, float] = dict()
