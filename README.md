@@ -1,6 +1,6 @@
 # 📊 Mathematical Modeling Application
 
-A **Python web application** built with **Streamlit** for solving linear systems, optimization problems, regression analysis, and simulating stochastic processes.
+A **Python web application** built with **[Streamlit] (https://docs.streamlit.io/)** for solving linear systems, optimization problems, regression analysis, and simulating stochastic processes.
 
 ---
 
