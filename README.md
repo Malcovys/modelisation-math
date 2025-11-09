@@ -242,7 +242,7 @@ All modules validate inputs:
 
 ## 📄 License
 
-Academic project by **Malcovys**
+Academic project by **[Malcovys](https://github.com/Malcovys)**
 
 ---
 
